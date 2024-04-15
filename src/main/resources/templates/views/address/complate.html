@@ -1,0 +1,35 @@
+<body>
+	<h3>登録されたアドレス一覧</h3>
+
+	<div th:if="${moneyList!=null and !moneyList.empty}">
+		<table class="table table-striped">
+			<thead>
+				<th>#</th>
+				<th>名前</th>
+				<th>メールアドレス</th>
+				<th>電話番号</th>
+				<th>郵便番号</th>
+				<th>住所</th>
+				<th role="action"></th>
+			</thead>
+			<tbody>
+				<tr class="align-middle" th:each="moneyBook, stat : ${moneyList}" th:object="${moneyBook}">
+					<td th:text="${stat.count}"></td>
+					<td th:text="|*{lastName}　*{firstName}|"></td>
+					<td th:text="*{mailmoney}"></td>
+					<td th:text="*{phoneNumber}"></td>
+					<td th:text="*{zipCode}"></td>
+					<td th:text="*{getmoneyText()}"></td>
+					<td>
+						<a class="btn btn-warning" th:href="@{/money/edit/{id}(id=*{id})}">編集・削除</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div th:unless="${moneyList!=null and !moneyList.empty}">
+		<div class="alert alert-danger" role="alert">
+			データなし
+		</div>
+	</div>
+</body>

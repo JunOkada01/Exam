@@ -1,0 +1,29 @@
+<body>
+	<h3>詳細</h3>
+		<table class="table table-striped">
+			<thead>
+				<th>id</th>
+				<th>名前</th>
+				<th>UserName</th>
+				<th>口座番号</th>
+				<th>残高</th>
+				<th role="action"></th>
+			</thead>
+			<tbody>
+				<tr class="align-middle" th:each="item, stat : ${detaillist}" th:object="${item}">
+					<td th:text="${stat.count}"></td>
+					
+					<td th:text="*{id}"></td>
+					<div>
+						<td th:text="*{firstname}"></td>
+						<td th:text="*{lastname}"></td>
+					</div>
+					<td th:text="*{nuber}"></td>
+				
+					<td th:text="*{balance}"></td>
+
+				</tr>
+			</tbody>
+		</table>
+		<a class="btn btn-warning" th:href="@{/}">トップページへ</a>
+</body>
